@@ -5,17 +5,20 @@ import java.util.Arrays;
 public class DataStorage {
     
     InputReader inputReader;
-    ArrayList<String> titles = new ArrayList<>();
-    ArrayList<String> ignoreWords = new ArrayList<>();
+    ArrayList<String> titles;
+    ArrayList<String> ignoreWords;
     
     public DataStorage(InputReader ir) {
         inputReader = ir;
-        titles = ir.getTitles();
-        ignoreWords = ir.getIgnoreWords();
+        titles = new ArrayList<>();
+        setup();
     }
     
     public void setup() {
-        
+        for (int i = 1; i < inputReader.getLineCount(); i++) {
+            titles.add(inputReader.getLine(i));
+        }
+        ignoreWords = new ArrayList<String>(Arrays.asList(inputReader.getLine(0).split(" ")));
     }
     
     public ArrayList<String> getAllTitles() {

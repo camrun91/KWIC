@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 
 public class Controller {
 
@@ -14,12 +13,7 @@ public class Controller {
         String inputFile = args[0];
         String outputFile = args[1];
         
-        ArrayList<String> titles = new ArrayList<>();
-        ArrayList<String> ignore = new ArrayList<>();
-        
         InputReader ir = new InputReader(inputFile);
-        titles = ir.getTitles();
-        ignore = ir.getIgnoreWords();
         
         DataStorage ds = new DataStorage(ir);
         

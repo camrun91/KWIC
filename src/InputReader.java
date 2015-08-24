@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,10 +7,11 @@ import java.io.IOException;
 
 public class InputReader {
     
-    ArrayList<String> lines; // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
+    ArrayList<String> lines = new ArrayList<>();
+    // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
     
     public InputReader(String filename) {
-        lines = readFile(filename);
+        readFile(filename);
     }
     
     /**
@@ -20,8 +20,7 @@ public class InputReader {
      * @param filename name of input file
      * @return         arraylist containing all lines
      */
-    public ArrayList<String> readFile(String filename) {
-        ArrayList<String> lines = new ArrayList<>();
+    public void readFile(String filename) {
         try {
             File file = new File(filename);
             FileReader fr = new FileReader(file);
@@ -34,21 +33,18 @@ public class InputReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+    }
+    
+    public ArrayList<String> getLines() {
         return lines;
     }
     
-    public ArrayList<String> getIgnoreWords() {
-        String ignore = lines.get(0);
-        return new ArrayList<String>(Arrays.asList(ignore.split(" ")));
+    public String getLine(int index) {
+        return lines.get(index);
     }
     
-    public ArrayList<String> getTitles() {
-        ArrayList<String> titles = new ArrayList<>();
-        for (int i = 1; i < lines.size(); i++) {
-            titles.add(lines.get(i));
-        }
-        return titles;
+    public int getLineCount() {
+        return lines.size();
     }
 
 }

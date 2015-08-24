@@ -8,10 +8,10 @@ import java.io.IOException;
 
 public class InputReader {
     
-    ArrayList<String> input;
+    ArrayList<String> lines; // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
     
     public InputReader(String filename) {
-        input = readFile(filename);
+        lines = readFile(filename);
     }
     
     /**
@@ -39,14 +39,14 @@ public class InputReader {
     }
     
     public ArrayList<String> getIgnoreWords() {
-        String ignore = input.get(0);
+        String ignore = lines.get(0);
         return new ArrayList<String>(Arrays.asList(ignore.split(" ")));
     }
     
     public ArrayList<String> getTitles() {
         ArrayList<String> titles = new ArrayList<>();
-        for (int i = 1; i < input.size(); i++) {
-            titles.add(input.get(i));
+        for (int i = 1; i < lines.size(); i++) {
+            titles.add(lines.get(i));
         }
         return titles;
     }

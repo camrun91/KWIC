@@ -12,7 +12,6 @@ public class OutputPrinter {
     
     public OutputPrinter(String filename, ArrayList<String> circularShifts) {
         this.circularShifts = circularShifts;
-        writeFile(filename);
     }
     
     public void writeFile(String filename) {

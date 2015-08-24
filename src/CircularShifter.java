@@ -3,27 +3,21 @@ import java.util.ArrayList;
 
 public class CircularShifter {
     
-    LineStorage lineStorage;
+    DataStorage dataStorage;
     InputReader inputReader;
     ArrayList<String> shifts= new ArrayList<>();
-    ArrayList<String> ignoreWords = new ArrayList<>();
     
-    public CircularShifter(LineStorage ls, InputReader ir) {
-        lineStorage = ls;
-        inputReader = ir;
-        ignoreWords = ir.getIgnoreWords();
-        for (String ignore : ignoreWords) {
-            System.out.println("Ignore: " + ignore);
-        }
+    public CircularShifter(DataStorage ds) {
+        dataStorage = ds;
     }
     
     public void setup() {
-        for (int i = 0; i < lineStorage.getLineCount(); i++) { // for each line
-            ArrayList<String> titleWords = lineStorage.getLine(i).getWords();
+        for (int i = 0; i < dataStorage.getTitleCount(); i++) { // for each title
+            ArrayList<String> titleWords = dataStorage.getTitle(i);
             
             for (int j = 0; j < titleWords.size(); j++) { // for each word in line
                 String firstWord = titleWords.get(j).toLowerCase();
-                if (!ignoreWords.contains(firstWord)) {
+                if (!dataStorage.getAllIgnoreWords().contains(firstWord)) {
                     shifts.add(constructCircularShift(titleWords, j));
                 }
             }

@@ -9,6 +9,8 @@ public class Controller {
 
     public static void main(String[] args) {
         
+        // later change format to use chars
+        
         String inputFile = args[0];
         String outputFile = args[1];
         
@@ -19,9 +21,9 @@ public class Controller {
         titles = ir.getTitles();
         ignore = ir.getIgnoreWords();
         
-        LineStorage ls = new LineStorage(ir);
+        DataStorage ds = new DataStorage(ir);
         
-        CircularShifter cs = new CircularShifter(ls, ir);
+        CircularShifter cs = new CircularShifter(ds);
         cs.setup();
         
         Alphabetizer a = new Alphabetizer(cs.getCircularShifts());
@@ -30,6 +32,7 @@ public class Controller {
         }
         
         OutputPrinter op = new OutputPrinter(outputFile, a.getSortedShifts());
+        op.writeFile(outputFile);
 
     }
 

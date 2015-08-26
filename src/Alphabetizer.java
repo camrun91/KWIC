@@ -12,10 +12,12 @@ public class Alphabetizer {
     }
     
     public void sort() {
+        System.out.println("Sorting shifts");
         Collections.sort(arr);
     }
     
     public ArrayList<String> getSortedShifts() {
+        System.out.println("Returning sorted shifts");
         return arr;
     }
 

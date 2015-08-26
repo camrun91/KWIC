@@ -11,10 +11,10 @@ public class DataStorage {
     public DataStorage(InputReader ir) {
         inputReader = ir;
         titles = new ArrayList<>();
-        setup();
     }
     
     public void setup() {
+        System.out.println("Setting up titles");
         for (int i = 1; i < inputReader.getLineCount(); i++) {
             titles.add(inputReader.getLine(i));
         }

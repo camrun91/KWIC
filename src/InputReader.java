@@ -11,6 +11,7 @@ public class InputReader {
     // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
     
     public InputReader(String filename) {
+        System.out.println("Reading file from " + filename);
         readFile(filename);
     }
     

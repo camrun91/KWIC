@@ -12,6 +12,7 @@ public class CircularShifter {
     }
     
     public void setup() {
+        System.out.println("Constructing circular shifts");
         for (int i = 0; i < dataStorage.getTitleCount(); i++) { // for each title
             ArrayList<String> titleWords = dataStorage.getTitle(i);
             

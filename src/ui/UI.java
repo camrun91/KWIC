@@ -1,3 +1,6 @@
+package ui;
+
+import hyungjon.Controller;
 
 import java.io.File;
 
@@ -28,13 +31,13 @@ public class UI extends Application {
         setupPane();
     }
     
-    public void setupPane() {
+    private void setupPane() {
         grid.setAlignment(Pos.CENTER);
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.setVgap(5);
         grid.setHgap(5);
         
-        final Text filenameText = new Text("Enter input text file path");
+        final Text filenameText = new Text("Enter input file path and choose method");
         grid.add(filenameText, 0, 0);
         
         final TextField filenameField = new TextField();
@@ -44,13 +47,18 @@ public class UI extends Application {
                 + "Second line onwards contain titles");
         grid.add(instructionText, 0, 2);
         
+        
         final HBox buttons = new HBox();
         
-        final Button submitButton = new Button();
-        submitButton.setText("Submit");
-        submitButton.setAlignment(Pos.BOTTOM_RIGHT);
+        final Button submitButton1 = new Button();
+        submitButton1.setText("Hyung Jon's method");
+        submitButton1.setAlignment(Pos.BOTTOM_LEFT);
         
-        buttons.getChildren().add(submitButton);
+        final Button submitButton2 = new Button();
+        submitButton2.setText("Jerrold's method");
+        submitButton2.setAlignment(Pos.BOTTOM_RIGHT);
+        
+        buttons.getChildren().addAll(submitButton1, submitButton2);
         grid.add(buttons, 0, 3);
         
         grid.add(resultArea, 0, 4);
@@ -58,19 +66,19 @@ public class UI extends Application {
         mainstage.setScene(new Scene(grid));
         mainstage.show();
         
-        filenameField.setOnAction(e -> {
+        submitButton1.setOnAction(e -> {
             process(filenameField.getText());
         });
         
-        submitButton.setOnAction(e -> {
-            process(filenameField.getText());
+        submitButton2.setOnAction(e -> {
+            //
         });
         
         // Add indicator of how long the prog ran
         
     }
     
-    public void process(String filename) {
+    private void process(String filename) {
         if (filename.length() > 4 && filename.substring(filename.length() - 4).equals(".txt")) {
             controller.processCircularShift(filename);
         } else {

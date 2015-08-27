@@ -1,3 +1,4 @@
+package hyungjon;
 
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -5,25 +6,29 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * 
+ * @author HyungJon
+ *
+ * Reads and stores all lines, without knowing what the contents are
+ */
 public class InputReader {
     
-    ArrayList<String> lines = new ArrayList<>();
-    // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
-    
+    ArrayList<String> lines;
     String filename;
     
     public InputReader(String filename) {
-        System.out.println("Reading file from " + filename);
         this.filename = filename;
+        lines = new ArrayList<>();
     }
     
     /**
-     * Reads file
+     * Reads file and stores all lines into ArrayList
      * 
      * @param filename name of input file
-     * @return         arraylist containing all lines
+     * @return         ArrayList containing all lines
      */
-    public void readFile() {
+    protected void readFile() {
         try {
             File file = new File(filename);
             FileReader fr = new FileReader(file);
@@ -38,15 +43,11 @@ public class InputReader {
         }
     }
     
-    public ArrayList<String> getLines() {
-        return lines;
-    }
-    
-    public String getLine(int index) {
+    protected String getLine(int index) {
         return lines.get(index);
     }
     
-    public int getLineCount() {
+    protected int getLineCount() {
         return lines.size();
     }
 

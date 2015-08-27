@@ -1,3 +1,6 @@
+package hyungjon;
+
+import ui.UI;
 
 public class Controller {
     
@@ -25,7 +28,7 @@ public class Controller {
         displayCircularShift(outputFormatter.getOutput());
     }
     
-    public void displayCircularShift(String output) {
+    private void displayCircularShift(String output) {
         ui.displayResult(output);
     }
 

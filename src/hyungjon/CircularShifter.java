@@ -1,3 +1,4 @@
+package hyungjon;
 
 import java.util.ArrayList;
 
@@ -29,16 +30,24 @@ public class CircularShifter {
         }
     }
     
-    public String getCircularShift(ArrayList<String> title, int startIndex) {
+    /**
+     * Constructs one circular shift of one line, starting from given word
+     * 
+     * @param title      line to construct circular shift out of
+     * @param startIndex index of word to start the shift from
+     * @return           circular shift constructed
+     */
+    protected String getCircularShift(ArrayList<String> title, int startIndex) {
         int wordCount = title.size();
         String circularShift = "";
+        
         for (int i = startIndex; i < (wordCount + startIndex); i++) {
             String word;
             
             if (i < wordCount) {
                 word = title.get(i);
             } else {
-                word = title.get(i - wordCount);
+                word = title.get(i - wordCount); // Wrap back to first word
             }
             
             // This is to avoid having to take substring later
@@ -51,7 +60,7 @@ public class CircularShifter {
         return circularShift;
     }
     
-    public ArrayList<String> getCircularShifts() {
+    protected ArrayList<String> getCircularShifts() {
         return shifts;
     }
 

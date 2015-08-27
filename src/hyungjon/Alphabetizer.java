@@ -1,3 +1,4 @@
+package hyungjon;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,11 +14,11 @@ public class Alphabetizer {
         circularShifts = new ArrayList<String>(circularShifter.getCircularShifts());
     }
     
-    public void sortCircularShifts() {
+    protected void sortCircularShifts() {
         Collections.sort(circularShifts);
     }
     
-    public ArrayList<String> getSortedShifts() {
+    protected ArrayList<String> getSortedShifts() {
         return circularShifts;
     }
     

@@ -2,13 +2,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DataStorage {
+public class LineProcessor {
     
     InputReader inputReader;
     ArrayList<String> titles;
     ArrayList<String> ignoreWords;
+    ArrayList<String> circularShifts;
     
-    public DataStorage(InputReader ir) {
+    public LineProcessor(InputReader ir) {
         inputReader = ir;
         titles = new ArrayList<>();
     }
@@ -19,10 +20,6 @@ public class DataStorage {
             titles.add(inputReader.getLine(i));
         }
         ignoreWords = new ArrayList<String>(Arrays.asList(inputReader.getLine(0).split(" ")));
-    }
-    
-    public ArrayList<String> getAllTitles() {
-        return titles;
     }
     
     public ArrayList<String> getTitle(int index) {

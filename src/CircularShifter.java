@@ -1,31 +1,35 @@
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author HyungJon
+ *
+ * Takes all titles and words to ignore, to create all possible circular shifts and store them in an array
+ */
 public class CircularShifter {
     
-    DataStorage dataStorage;
-    InputReader inputReader;
+    LineProcessor lineProcessor;
     ArrayList<String> shifts= new ArrayList<>();
     
-    public CircularShifter(DataStorage ds) {
-        dataStorage = ds;
+    public CircularShifter(LineProcessor lineProcessor) {
+        this.lineProcessor = lineProcessor;
     }
     
-    public void setup() {
-        System.out.println("Constructing circular shifts");
-        for (int i = 0; i < dataStorage.getTitleCount(); i++) { // for each title
-            ArrayList<String> titleWords = dataStorage.getTitle(i);
+    public void constructCircularShifts() {
+        for (int i = 0; i < lineProcessor.getTitleCount(); i++) { // for each title
+            ArrayList<String> titleWords = lineProcessor.getTitle(i);
             
             for (int j = 0; j < titleWords.size(); j++) { // for each word in line
                 String firstWord = titleWords.get(j).toLowerCase();
-                if (!dataStorage.getAllIgnoreWords().contains(firstWord)) {
-                    shifts.add(constructCircularShift(titleWords, j));
+                if (!lineProcessor.getAllIgnoreWords().contains(firstWord)) {
+                    shifts.add(getCircularShift(titleWords, j));
                 }
             }
         }
     }
     
-    public String constructCircularShift(ArrayList<String> title, int startIndex) {
+    public String getCircularShift(ArrayList<String> title, int startIndex) {
         int wordCount = title.size();
         String circularShift = "";
         for (int i = startIndex; i < (wordCount + startIndex); i++) {
@@ -36,22 +40,18 @@ public class CircularShifter {
             } else {
                 word = title.get(i - wordCount);
             }
-            System.out.print(word + " ");
             
+            // This is to avoid having to take substring later
             if (i == startIndex) {
                 circularShift = circularShift + word;
             } else {
                 circularShift = circularShift + " " + word;
             }
         }
-        System.out.println("");
-        return circularShift; // Remove first whitespace
+        return circularShift;
     }
     
     public ArrayList<String> getCircularShifts() {
-        for (String shift : shifts) {
-            System.out.println("Shift: " + shift);
-        }
         return shifts;
     }
 

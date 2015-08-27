@@ -4,21 +4,21 @@ import java.util.Collections;
 
 public class Alphabetizer {
     
-    ArrayList<String> arr = new ArrayList<>();
+    ArrayList<String> circularShifts;
+    CircularShifter circularShifter;
     
-    public Alphabetizer(ArrayList<String> circularShifts) {
-        arr = circularShifts;
-        sort();
+    public Alphabetizer(CircularShifter shifter) {
+        this.circularShifter = shifter;
+        // Array copied to avoid the sort affecting the DataStorage
+        circularShifts = new ArrayList<String>(circularShifter.getCircularShifts());
     }
     
-    public void sort() {
-        System.out.println("Sorting shifts");
-        Collections.sort(arr);
+    public void sortCircularShifts() {
+        Collections.sort(circularShifts);
     }
     
     public ArrayList<String> getSortedShifts() {
-        System.out.println("Returning sorted shifts");
-        return arr;
+        return circularShifts;
     }
-
+    
 }

@@ -10,9 +10,11 @@ public class InputReader {
     ArrayList<String> lines = new ArrayList<>();
     // Stores all lines without knowing the contents. Knowledge of contents is for DataStorage.
     
+    String filename;
+    
     public InputReader(String filename) {
         System.out.println("Reading file from " + filename);
-        readFile(filename);
+        this.filename = filename;
     }
     
     /**
@@ -21,7 +23,7 @@ public class InputReader {
      * @param filename name of input file
      * @return         arraylist containing all lines
      */
-    public void readFile(String filename) {
+    public void readFile() {
         try {
             File file = new File(filename);
             FileReader fr = new FileReader(file);

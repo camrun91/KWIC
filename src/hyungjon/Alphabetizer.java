@@ -10,7 +10,6 @@ public class Alphabetizer {
     
     public Alphabetizer(CircularShifter shifter) {
         this.circularShifter = shifter;
-        // Array copied to avoid the sort affecting the DataStorage
         circularShifts = new ArrayList<String>(circularShifter.getCircularShifts());
     }
     

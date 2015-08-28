@@ -1,16 +1,11 @@
 package ui;
 
-import hyungjon.Controller;
-
-import java.io.File;
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -18,17 +13,17 @@ import javafx.stage.Stage;
 
 public class UI extends Application {
     
-    Stage mainstage = new Stage();
+    Stage mainStage = new Stage();
     GridPane grid = new GridPane();
-    Controller controller;
-    TextArea resultArea;
+    hyungjon.Controller controllerHJ;
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("CS3219 Assignment 1 - Circular Shift");
-        controller = new Controller(this);
-        resultArea = new TextArea();
+        mainStage = primaryStage;
+        mainStage.setTitle("CS3219 Assignment 1 - Circular Shift");
+        controllerHJ = new hyungjon.Controller(this);
         setupPane();
+        mainStage.show();
     }
     
     private void setupPane() {
@@ -36,6 +31,7 @@ public class UI extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.setVgap(5);
         grid.setHgap(5);
+        grid.setMinSize(500, 180);
         
         final Text filenameText = new Text("Enter input file path and choose method");
         grid.add(filenameText, 0, 0);
@@ -47,52 +43,38 @@ public class UI extends Application {
                 + "Second line onwards contain titles");
         grid.add(instructionText, 0, 2);
         
+        final TextField outputFilenameField = new TextField("output.txt");
+        grid.add(outputFilenameField, 0, 3);
         
         final HBox buttons = new HBox();
         
         final Button submitButton1 = new Button();
         submitButton1.setText("Hyung Jon's method");
-        submitButton1.setAlignment(Pos.BOTTOM_LEFT);
+        submitButton1.setMinWidth(240);
+        submitButton1.setAlignment(Pos.BOTTOM_CENTER);
         
         final Button submitButton2 = new Button();
         submitButton2.setText("Jerrold's method");
-        submitButton2.setAlignment(Pos.BOTTOM_RIGHT);
+        submitButton2.setMinWidth(240);
+        submitButton2.setAlignment(Pos.BOTTOM_CENTER);
         
         buttons.getChildren().addAll(submitButton1, submitButton2);
-        grid.add(buttons, 0, 3);
+        grid.add(buttons, 0, 4);
         
-        grid.add(resultArea, 0, 4);
-        
-        mainstage.setScene(new Scene(grid));
-        mainstage.show();
+        mainStage.setScene(new Scene(grid));
         
         submitButton1.setOnAction(e -> {
-            process(filenameField.getText());
+            processHJ(filenameField.getText(), outputFilenameField.getText());
         });
         
         submitButton2.setOnAction(e -> {
-            //
+            // Jerrold's controller
         });
         
-        // Add indicator of how long the prog ran
-        
     }
     
-    private void process(String filename) {
-        if (filename.length() > 4 && filename.substring(filename.length() - 4).equals(".txt")) {
-            controller.processCircularShift(filename);
-        } else {
-            resultArea.setText("Not a text file");
-        }
-        
-        File file = new File(filename);
-        if (!file.exists()) {
-            resultArea.setText("File does not exist");
-        }
-    }
-    
-    public void displayResult(String result) {
-        resultArea.setText(result);
+    private void processHJ(String inputFilename, String outputFilename) {
+        controllerHJ.processCircularShift(inputFilename, outputFilename);
     }
     
     public static void main(String[] args) {

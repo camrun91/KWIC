@@ -23,7 +23,6 @@ public class LineProcessor {
     }
     
     protected void setup() {
-        System.out.println("Setting up titles");
         for (int i = 1; i < inputReader.getLineCount(); i++) {
             titles.add(inputReader.getLine(i));
         }
@@ -40,6 +39,7 @@ public class LineProcessor {
     
     /**
      * Splits a line into words and stores it in ArrayList
+     * 
      * 
      * @param line String containing a line
      * @return     ArrayList containing all words in given line

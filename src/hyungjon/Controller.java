@@ -10,8 +10,8 @@ public class Controller {
         this.ui = ui;
     }
     
-    public void processCircularShift(String filename) {
-        InputReader inputReader = new InputReader(filename);
+    public void processCircularShift(String inputFilename, String outputFilename) {
+        InputReader inputReader = new InputReader(inputFilename);
         inputReader.readFile();
         
         LineProcessor lineProcessor = new LineProcessor(inputReader);
@@ -23,13 +23,8 @@ public class Controller {
         Alphabetizer alphabetizer = new Alphabetizer(circularShifter);
         alphabetizer.sortCircularShifts();
         
-        OutputFormatter outputFormatter = new OutputFormatter(alphabetizer.getSortedShifts());
-        
-        displayCircularShift(outputFormatter.getOutput());
-    }
-    
-    private void displayCircularShift(String output) {
-        ui.displayResult(output);
+        OutputWriter outputWriter = new OutputWriter(outputFilename, alphabetizer.getSortedShifts());
+        outputWriter.writeToFile();
     }
 
 }

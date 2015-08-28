@@ -52,7 +52,8 @@ public class CircularShifter {
             
             // This is to avoid having to take substring later
             if (i == startIndex) {
-                circularShift = circularShift + word;
+                // Capitalize first letter
+                circularShift = circularShift + (word.substring(0, 1).toUpperCase() + word.substring(1));
             } else {
                 circularShift = circularShift + " " + word;
             }

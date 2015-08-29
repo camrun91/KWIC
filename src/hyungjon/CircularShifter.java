@@ -50,10 +50,16 @@ public class CircularShifter {
                 word = title.get(i - wordCount); // Wrap back to first word
             }
             
+            // Capitalize if non-ignore, small letters if ignore
+            if (lineProcessor.getAllIgnoreWords().contains(word.toLowerCase())) {
+                word = word.toLowerCase();
+            } else {
+                word = word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+            }
+            
             // This is to avoid having to take substring later
             if (i == startIndex) {
-                // Capitalize first letter
-                circularShift = circularShift + (word.substring(0, 1).toUpperCase() + word.substring(1));
+                circularShift = circularShift + word;
             } else {
                 circularShift = circularShift + " " + word;
             }

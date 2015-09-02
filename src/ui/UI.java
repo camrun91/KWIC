@@ -16,12 +16,14 @@ public class UI extends Application {
     Stage mainStage = new Stage();
     GridPane grid = new GridPane();
     hyungjon.Controller controllerHJ;
+    jerrold.Controller controllerJerrold;
     
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
         mainStage.setTitle("CS3219 Assignment 1 - Circular Shift");
         controllerHJ = new hyungjon.Controller(this);
+        controllerJerrold = new jerrold.Controller(this);
         setupPane();
         mainStage.show();
     }
@@ -68,13 +70,17 @@ public class UI extends Application {
         });
         
         submitButton2.setOnAction(e -> {
-            // Jerrold's controller
+            processJerrold(filenameField.getText(), outputFilenameField.getText());
         });
         
     }
     
     private void processHJ(String inputFilename, String outputFilename) {
         controllerHJ.processCircularShift(inputFilename, outputFilename);
+    }
+    
+    private void processJerrold(String inputFilename, String outputFilename) {
+        controllerJerrold.processCircularShift(inputFilename, outputFilename);
     }
     
     public static void main(String[] args) {

@@ -101,5 +101,11 @@ public class CoreData {
     protected ArrayList<String> splitToArrayList(String line) {
         return new ArrayList<String>(Arrays.asList(line.split(" ")));
     }
+    
+    public void printList(ArrayList<String> listToPrint){
+    	for (int i = 0; i < listToPrint.size(); i++){
+    		System.out.println(listToPrint.get(i));
+    	}
+    }
 
 }

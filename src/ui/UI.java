@@ -20,7 +20,7 @@ public class UI extends Application {
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
-        mainStage.setTitle("CS3219 Assignment 1 - Circular Shift");
+        mainStage.setTitle("CS3219 Assignment 1 - KWIK");
         controllerHJ = new hyungjon.Controller(this);
         setupPane();
         mainStage.show();
@@ -31,7 +31,7 @@ public class UI extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.setVgap(5);
         grid.setHgap(5);
-        grid.setMinSize(500, 180);
+        grid.setMinSize(360, 180);
         
         final Text filenameText = new Text("Enter input file path and choose method");
         grid.add(filenameText, 0, 0);
@@ -50,12 +50,12 @@ public class UI extends Application {
         
         final Button submitButton1 = new Button();
         submitButton1.setText("Hyung Jon's method");
-        submitButton1.setMinWidth(240);
+        submitButton1.setMinWidth(180);
         submitButton1.setAlignment(Pos.BOTTOM_CENTER);
         
         final Button submitButton2 = new Button();
         submitButton2.setText("Jerrold's method");
-        submitButton2.setMinWidth(240);
+        submitButton2.setMinWidth(180);
         submitButton2.setAlignment(Pos.BOTTOM_CENTER);
         
         buttons.getChildren().addAll(submitButton1, submitButton2);

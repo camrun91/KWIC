@@ -1,11 +1,10 @@
 package jerrold;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * 
- * @author HyungJon
+ * @author Jerrold
  *
  * Takes lines from InputReader, with knowledge of what each line is,
  * and turns them into a form usable by CircularShifter

@@ -35,15 +35,14 @@ public class UI extends Application {
         grid.setHgap(5);
         grid.setMinSize(360, 180);
         
-        final Text filenameText = new Text("Enter input file path and choose method");
-        grid.add(filenameText, 0, 0);
+        final Text inputFilenameText = new Text("Enter input file path");
+        grid.add(inputFilenameText, 0, 0);
         
-        final TextField filenameField = new TextField();
-        grid.add(filenameField, 0, 1);
+        final TextField inputFilenameField = new TextField();
+        grid.add(inputFilenameField, 0, 1);
         
-        final Text instructionText = new Text("First line contains words to ignore, separated by whitespace\n"
-                + "Second line onwards contain titles");
-        grid.add(instructionText, 0, 2);
+        final Text outputFilenameText = new Text("Enter the output file path and choose method");
+        grid.add(outputFilenameText, 0, 2);
         
         final TextField outputFilenameField = new TextField("output.txt");
         grid.add(outputFilenameField, 0, 3);
@@ -51,36 +50,41 @@ public class UI extends Application {
         final HBox buttons = new HBox();
         
         final Button submitButton1 = new Button();
-        submitButton1.setText("Hyung Jon's method");
+        submitButton1.setText("Solution 1: Jerrold");
         submitButton1.setMinWidth(180);
         submitButton1.setAlignment(Pos.BOTTOM_CENTER);
         
         final Button submitButton2 = new Button();
-        submitButton2.setText("Jerrold's method");
+        submitButton2.setText("Solution 2: Hyung Jon");
         submitButton2.setMinWidth(180);
         submitButton2.setAlignment(Pos.BOTTOM_CENTER);
         
         buttons.getChildren().addAll(submitButton1, submitButton2);
         grid.add(buttons, 0, 4);
         
+        final Text instructions = new Text("Input format: \n"
+                + "First line contains all words to ignore\n"
+                + "Second line onwards each contain one title");
+        grid.add(instructions, 0, 5);
+        
         mainStage.setScene(new Scene(grid));
         
         submitButton1.setOnAction(e -> {
-            processHJ(filenameField.getText(), outputFilenameField.getText());
+            processJerrold(inputFilenameField.getText(), outputFilenameField.getText());
         });
         
         submitButton2.setOnAction(e -> {
-            processJerrold(filenameField.getText(), outputFilenameField.getText());
+            processHJ(inputFilenameField.getText(), outputFilenameField.getText());
         });
         
-    }
-    
-    private void processHJ(String inputFilename, String outputFilename) {
-        controllerHJ.processCircularShift(inputFilename, outputFilename);
     }
     
     private void processJerrold(String inputFilename, String outputFilename) {
         controllerJerrold.processCircularShift(inputFilename, outputFilename);
+    }
+    
+    private void processHJ(String inputFilename, String outputFilename) {
+        controllerHJ.processCircularShift(inputFilename, outputFilename);
     }
     
     public static void main(String[] args) {

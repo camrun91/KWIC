@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author HyungJon
+ * @author Jerrold
  *
- * Takes all titles and words to ignore, to create all possible circular shifts and store them in an array
+ * Takes all titles and words to ignore, to create all possible circular shifts and store them in CoreData
  */
 public class CircularShifter {
     

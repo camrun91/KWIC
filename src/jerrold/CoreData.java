@@ -92,8 +92,7 @@ public class CoreData {
     }
     
     /**
-     * Splits a line into words and stores it in ArrayList
-     * 
+     * Splits a line into words and returns it as ArrayList
      * 
      * @param line String containing a line
      * @return     ArrayList containing all words in given line

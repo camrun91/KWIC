@@ -8,9 +8,9 @@ import java.io.IOException;
 
 /**
  * 
- * @author HyungJon
+ * @author Jerrold
  *
- * Reads and stores all lines, without knowing what the contents are
+ * Reads and stores all lines in CoreData, without knowing what the contents are
  */
 public class InputReader {
     

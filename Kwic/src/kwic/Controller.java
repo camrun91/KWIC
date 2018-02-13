@@ -1,6 +1,7 @@
-package hyungjon;
+package kwic;
 
-import ui.UI;
+import javafx.scene.control.TextArea;
+
 
 public class Controller {
     
@@ -10,9 +11,9 @@ public class Controller {
         this.ui = ui;
     }
     
-    public void processCircularShift(String inputFilename, String outputFilename) {
-        InputReader inputReader = new InputReader(inputFilename);
-        inputReader.readFile();
+    public void processCircularShift(String input, TextArea output) {
+        
+        InputReader inputReader = new InputReader(input);
         
         LineProcessor lineProcessor = new LineProcessor(inputReader);
         lineProcessor.setup();
@@ -23,7 +24,7 @@ public class Controller {
         Alphabetizer alphabetizer = new Alphabetizer(circularShifter);
         alphabetizer.sortCircularShifts();
         
-        OutputWriter outputWriter = new OutputWriter(outputFilename, alphabetizer.getSortedShifts());
+        OutputWriter outputWriter = new OutputWriter( alphabetizer.getSortedShifts());
         outputWriter.writeToFile();
     }
 

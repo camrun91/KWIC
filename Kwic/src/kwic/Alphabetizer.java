@@ -1,4 +1,4 @@
-package hyungjon;
+package kwic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,7 @@ public class Alphabetizer {
     
     public Alphabetizer(CircularShifter shifter) {
         this.circularShifter = shifter;
-        circularShifts = new ArrayList<String>(circularShifter.getCircularShifts());
+        circularShifts = new ArrayList<>(circularShifter.getCircularShifts());
     }
     
     protected void sortCircularShifts() {

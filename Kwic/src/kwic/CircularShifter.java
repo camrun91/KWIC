@@ -1,34 +1,33 @@
-package jerrold;
+package kwic;
 
 import java.util.ArrayList;
 
 /**
  * 
- * @author Jerrold
+ * @author HyungJon
  *
- * Takes all titles and words to ignore, to create all possible circular shifts and store them in CoreData
+ * Takes all titles and words to ignore, to create all possible circular shifts and store them in an array
  */
 public class CircularShifter {
     
-    CoreData core;
-    ArrayList<String> shifts = new ArrayList<String>();
+    LineProcessor lineProcessor;
+    ArrayList<String> shifts= new ArrayList<>();
     
-    public CircularShifter(CoreData core) {
-        this.core = core;
+    public CircularShifter(LineProcessor lineProcessor) {
+        this.lineProcessor = lineProcessor;
     }
     
     public void constructCircularShifts() {
-        for (int i = 0; i < core.getTitleCount(); i++) { // for each title
-            ArrayList<String> titleWords = core.getTitle(i);
+        for (int i = 0; i < lineProcessor.getTitleCount(); i++) { // for each title
+            ArrayList<String> titleWords = lineProcessor.getTitle(i);
             
             for (int j = 0; j < titleWords.size(); j++) { // for each word in line
                 String firstWord = titleWords.get(j).toLowerCase();
-                if (!core.getIgnoreWords().contains(firstWord)) {
+               // if (!lineProcessor.getAllIgnoreWords().contains(firstWord)) {
                     shifts.add(getCircularShift(titleWords, j));
-                }
+                
             }
         }
-        core.setShifts(shifts);
     }
     
     /**
@@ -59,6 +58,10 @@ public class CircularShifter {
             }
         }
         return circularShift;
+    }
+    
+    protected ArrayList<String> getCircularShifts() {
+        return shifts;
     }
 
 }

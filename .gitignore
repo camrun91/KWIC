@@ -1,11 +1,19 @@
+#ant specific
 
+dist/
 
+build/
 
+#netbeans specific
 
+/DungeonCrawl/nbproject/private
+
+/DungeonCrawl/nbproject/build-impl.xml
+
+/DungeonCrawl/nbproject/genfiles.properties
 
 bin/
-/Kwic/nbproject/private/
-/Kwic/build/
+/Kwic/nbproject/private
 Kwic/nbproject/build-impl.xml
 Kwic/nbproject/genfiles.propertie
 
@@ -20,13 +28,3 @@ Kwic/nbproject/genfiles.propertie
 *.swp
 *.DS_Store
 *.lock
-
-Kwic/nbproject/project\.xml
-
-Kwic/nbproject/project\.properties
-
-Kwic/nbproject/genfiles\.properties
-
-Kwic/manifest\.mf
-
-Kwic/build\.xml

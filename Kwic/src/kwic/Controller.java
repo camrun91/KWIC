@@ -24,8 +24,8 @@ public class Controller {
         Alphabetizer alphabetizer = new Alphabetizer(circularShifter);
         alphabetizer.sortCircularShifts();
         
-        OutputWriter outputWriter = new OutputWriter( alphabetizer.getSortedShifts());
-        outputWriter.writeToFile();
+        OutputWriter outputWriter = new OutputWriter( alphabetizer.getSortedShifts(), output);
+        outputWriter.outputToText();
     }
 
 }

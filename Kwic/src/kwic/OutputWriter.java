@@ -6,15 +6,20 @@ import javafx.scene.control.TextArea;
 
 public class OutputWriter {
     
-    String line;
-    ArrayList<String> output;
     
-    public OutputWriter( ArrayList<String> output) {
+    ArrayList<String> outputList;
+    TextArea output;
+    
+    public OutputWriter( ArrayList<String> outputList, TextArea output ) {
+        this.outputList = outputList;
         this.output = output;
     }
     
-    public void writeToFile() {
-      
+    public void outputToText() {
+        outputList.forEach((line) -> {
+            this.output.appendText(line);
+            this.output.appendText("\n");
+        });
     }
    
 

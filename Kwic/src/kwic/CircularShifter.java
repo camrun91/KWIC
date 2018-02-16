@@ -22,7 +22,7 @@ public class CircularShifter {
             ArrayList<String> titleWords = lineProcessor.getTitle(i);
             
             for (int j = 0; j < titleWords.size(); j++) { // for each word in line
-                String firstWord = titleWords.get(j).toLowerCase();
+               // String firstWord = titleWords.get(j).toLowerCase();
                // if (!lineProcessor.getAllIgnoreWords().contains(firstWord)) {
                     shifts.add(getCircularShift(titleWords, j));
                 
@@ -50,11 +50,11 @@ public class CircularShifter {
                 word = title.get(i - wordCount); // Wrap back to first word
             }
             
-            // This is to avoid having to take substring later
+             //This is to avoid having to take substring later
             if (i == startIndex) {
                 circularShift = circularShift + word.toUpperCase();
             } else {
-                circularShift = circularShift + " " + word.toLowerCase();
+               circularShift = circularShift + " " + word.toLowerCase();
             }
         }
         return circularShift;

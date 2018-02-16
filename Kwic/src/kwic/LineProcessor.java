@@ -16,7 +16,7 @@ public class LineProcessor {
     }
     
     protected void setup() {
-        for (int i = 1; i < inputReader.getLineCount(); i++) {
+        for (int i = 0; i < inputReader.getLineCount(); i++) {
             titles.add(inputReader.getLine(i));
         }
      //   ignoreWords = splitToArrayList(inputReader.getLine(0));

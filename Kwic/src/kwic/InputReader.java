@@ -16,20 +16,6 @@ public class InputReader {
         this.lines = new ArrayList<>(Arrays.asList(input.split("\\r?\\n")));
     }
     
-   // protected void readFile() {
-        //try {
-            
-            //BufferedReader br = new BufferedReader(fr);
-            //String line;
-           // while ((line = br.readLine()) != null) {
-//                lines.add(line);
-  //          }
-    //        br.close();
-      //  } catch (IOException e) {
-        //    e.printStackTrace();
-        //}
-   // }
-    
     protected String getLine(int index) {
         return lines.get(index);
     }

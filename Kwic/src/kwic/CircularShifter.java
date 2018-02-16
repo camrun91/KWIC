@@ -2,12 +2,6 @@ package kwic;
 
 import java.util.ArrayList;
 
-/**
- * 
- * @author HyungJon
- *
- * Takes all titles and words to ignore, to create all possible circular shifts and store them in an array
- */
 public class CircularShifter {
     
     LineProcessor lineProcessor;
@@ -18,13 +12,12 @@ public class CircularShifter {
     }
     
     public void constructCircularShifts() {
-        for (int i = 0; i < lineProcessor.getTitleCount(); i++) { // for each title
-            ArrayList<String> titleWords = lineProcessor.getTitle(i);
-            
-            for (int j = 0; j < titleWords.size(); j++) { // for each word in line
-               // String firstWord = titleWords.get(j).toLowerCase();
-               // if (!lineProcessor.getAllIgnoreWords().contains(firstWord)) {
-                    shifts.add(getCircularShift(titleWords, j));
+        //this loop gets each line
+        for (int i = 0; i < lineProcessor.getTitleCount(); i++) {
+            ArrayList<String> lines = lineProcessor.getWord(i);
+            //this next loop gets each word in the line
+            for (int j = 0; j < lines.size(); j++) { 
+                    shifts.add(getCircularShift(lines, j));
                 
             }
         }
@@ -33,28 +26,27 @@ public class CircularShifter {
     /**
      * Constructs one circular shift of one line, starting from given word
      * 
-     * @param title      line to construct circular shift out of
+     * @param line      line to construct circular shift out of
      * @param startIndex index of word to start the shift from
      * @return           circular shift constructed
      */
-    protected String getCircularShift(ArrayList<String> title, int startIndex) {
-        int wordCount = title.size();
+    protected String getCircularShift(ArrayList<String> line, int startIndex) {
+        int wordCount = line.size();
         String circularShift = "";
         
         for (int i = startIndex; i < (wordCount + startIndex); i++) {
             String word;
             
-            if (i < wordCount) {
-                word = title.get(i);
-            } else {
-                word = title.get(i - wordCount); // Wrap back to first word
+            if (i < wordCount) 
+                word = line.get(i);
+             else {
+                word = line.get(i - wordCount); // Wrap back to first word
             }
             
-             //This is to avoid having to take substring later
             if (i == startIndex) {
-                circularShift = circularShift + word.toUpperCase();
+                circularShift = circularShift + word;
             } else {
-               circularShift = circularShift + " " + word.toLowerCase();
+               circularShift = circularShift + " " + word;
             }
         }
         return circularShift;

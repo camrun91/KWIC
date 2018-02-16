@@ -49,25 +49,33 @@ public class UI extends Application {
         final HBox buttons = new HBox();
         
         
-        final Button submitButton2 = new Button();
-        submitButton2.setText("Solution");
-        submitButton2.setMinWidth(180);
-        submitButton2.setAlignment(Pos.BOTTOM_CENTER);
+        final Button submitButton = new Button();
+        submitButton.setText("Solution");
+        submitButton.setMinWidth(180);
+        submitButton.setAlignment(Pos.BOTTOM_CENTER);
+        final Button clearButton = new Button();
+        clearButton.setText("Clear Output");
+        clearButton.setMinWidth(180);
+        clearButton.setAlignment(Pos.BOTTOM_CENTER);
         
-        buttons.getChildren().addAll( submitButton2);
+        buttons.getChildren().addAll(submitButton,clearButton);
         grid.add(buttons, 0, 4);
         
         mainStage.setScene(new Scene(grid));
         
         
-        submitButton2.setOnAction(e -> {
-            processHJ(inputField.getText());
+        submitButton.setOnAction(e -> {
+            process(inputField.getText());
+        });
+        
+        clearButton.setOnAction(e -> {
+            this.outputField.setText(null);
         });
         
     }
     
     
-    private void processHJ(String inputFilename) {
+    private void process(String inputFilename) {
         controller.processCircularShift(inputFilename, this.outputField);
     }
     

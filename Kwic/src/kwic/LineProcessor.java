@@ -6,28 +6,23 @@ import java.util.Arrays;
 public class LineProcessor {
     
     InputReader inputReader;
-    ArrayList<String> titles;
-   // ArrayList<String> ignoreWords;
+    ArrayList<String> Lines;
     ArrayList<String> circularShifts;
     
     public LineProcessor(InputReader inputReader) {
         this.inputReader = inputReader;
-        titles = new ArrayList<>();
+        Lines = new ArrayList<>();
     }
     
     protected void setup() {
         for (int i = 0; i < inputReader.getLineCount(); i++) {
-            titles.add(inputReader.getLine(i));
+            Lines.add(inputReader.getLine(i));
         }
-     //   ignoreWords = splitToArrayList(inputReader.getLine(0));
     }
     
-    //protected ArrayList<String> getAllIgnoreWords() {
-   //     return ignoreWords;
-   // }
     
-    protected ArrayList<String> getTitle(int index) {
-        return splitToArrayList(titles.get(index));
+    protected ArrayList<String> getWord(int index) {
+        return splitToArrayList(Lines.get(index));
     }
     
     /**
@@ -41,7 +36,7 @@ public class LineProcessor {
     }
     
     protected int getTitleCount() {
-        return titles.size();
+        return Lines.size();
     }
 
 }

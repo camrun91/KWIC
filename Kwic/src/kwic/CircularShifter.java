@@ -1,7 +1,9 @@
 package kwic;
 
 import java.util.ArrayList;
-
+/*
+This class takes the input from lineprocessor and shifts it word by word. 
+*/
 public class CircularShifter {
     
     LineProcessor lineProcessor;
@@ -40,7 +42,8 @@ public class CircularShifter {
             if (i < wordCount) 
                 word = line.get(i);
              else {
-                word = line.get(i - wordCount); // Wrap back to first word
+                // Wrap back to first word
+                word = line.get(i - wordCount); 
             }
             
             if (i == startIndex) {

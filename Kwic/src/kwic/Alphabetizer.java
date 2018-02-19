@@ -12,9 +12,11 @@ public class Alphabetizer {
         this.circularShifter = shifter;
         circularShifts = new ArrayList<>(circularShifter.getCircularShifts());
     }
-    
+    //the collections.sort sorst the array list alphebeticly the collections.reverse reverses this to fit the criteria
+    //for the asignment.
     protected void sortCircularShifts() {
         Collections.sort(circularShifts);
+        Collections.reverse(circularShifts);
     }
     
     protected ArrayList<String> getSortedShifts() {

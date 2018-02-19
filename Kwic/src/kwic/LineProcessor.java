@@ -2,7 +2,9 @@ package kwic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/*
+This class takes the lines from input reader and processes them for shifting.
+*/
 public class LineProcessor {
     
     InputReader inputReader;
@@ -13,7 +15,7 @@ public class LineProcessor {
         this.inputReader = inputReader;
         Lines = new ArrayList<>();
     }
-    
+    //sets up the arraylist to contain the lines
     protected void setup() {
         for (int i = 0; i < inputReader.getLineCount(); i++) {
             Lines.add(inputReader.getLine(i));

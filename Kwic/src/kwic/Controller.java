@@ -17,19 +17,22 @@ public class Controller {
     }
     
     public void processCircularShift(String input, TextArea output) {
+        CoreData core = new CoreData();
+        core.setInput(input);
+        core.setOutput(output);
         //process input
-        InputReader inputReader = new InputReader(input);
+        InputReader inputReader = new InputReader(core);
+        inputReader.readInput();
         //use inputreaders data to process the lines
-        LineProcessor lineProcessor = new LineProcessor(inputReader);
+        LineProcessor lineProcessor = new LineProcessor(core);
         lineProcessor.setup();
         //shift the words in the lines
-        CircularShifter circularShifter = new CircularShifter(lineProcessor);
+        CircularShifter circularShifter = new CircularShifter(core);
         circularShifter.constructCircularShifts();
         //aphabetize the ines 
-        Alphabetizer alphabetizer = new Alphabetizer(circularShifter);
-        alphabetizer.sortCircularShifts();
+        Alphabetizer alphabetizer = new Alphabetizer(core);
         //output the alphabetized lines 
-        OutputWriter outputWriter = new OutputWriter( alphabetizer.getSortedShifts(), output);
+        OutputWriter outputWriter = new OutputWriter(core, output);
         outputWriter.outputToText();
     }
 

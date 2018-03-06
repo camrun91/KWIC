@@ -6,11 +6,11 @@ import java.util.Collections;
 public class Alphabetizer {
     
     ArrayList<String> circularShifts;
-    CircularShifter circularShifter;
+    CoreData core;
     
-    public Alphabetizer(CircularShifter shifter) {
-        this.circularShifter = shifter;
-        circularShifts = new ArrayList<>(circularShifter.getCircularShifts());
+    public Alphabetizer(CoreData core) {
+        this.core = core;
+        circularShifts = new ArrayList<>(core.getCircularShifts());
     }
     //the collections.sort sorst the array list alphebeticly the collections.reverse reverses this to fit the criteria
     //for the asignment.
@@ -18,9 +18,4 @@ public class Alphabetizer {
         Collections.sort(circularShifts);
         Collections.reverse(circularShifts);
     }
-    
-    protected ArrayList<String> getSortedShifts() {
-        return circularShifts;
-    }
-    
 }

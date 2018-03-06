@@ -11,20 +11,16 @@ It puts the lines into an arraylist for manipulation later.
 
 public class InputReader {
     
-    List<String> lines;
+    ArrayList<String> lines;
     String input;
+    CoreData core;
     //reads in the content of the text area. And splits it on new lines.
-    public InputReader(String input) {
-        this.input = input;
-        this.lines = new ArrayList<>(Arrays.asList(input.split("\\r?\\n")));
+    public InputReader(CoreData core) {
+        this.core =core;
+        this.input = core.getInput();
     }
-    //gets index of the line 
-    protected String getLine(int index) {
-        return lines.get(index);
+    protected void readInput(){
+        lines = new ArrayList<>(Arrays.asList(input.split("\\r?\\n")));
+        core.setLines(lines);
     }
-    //length of the line
-    protected int getLineCount() {
-        return lines.size();
-    }
-
 }

@@ -6,23 +6,23 @@ This class takes the input from lineprocessor and shifts it word by word.
 */
 public class CircularShifter {
     
-    LineProcessor lineProcessor;
+    CoreData core;
     ArrayList<String> shifts= new ArrayList<>();
     
-    public CircularShifter(LineProcessor lineProcessor) {
-        this.lineProcessor = lineProcessor;
+    public CircularShifter(CoreData core) {
+        this.core = core;
     }
     
     public void constructCircularShifts() {
         //this loop gets each line
-        for (int i = 0; i < lineProcessor.getTitleCount(); i++) {
-            ArrayList<String> lines = lineProcessor.getWord(i);
+        for (int i = 0; i < core.getWordCount(); i++) {
+            ArrayList<String> lines = core.getWord(i);
             //this next loop gets each word in the line
             for (int j = 0; j < lines.size(); j++) { 
                     shifts.add(getCircularShift(lines, j));
-                
             }
         }
+        core.setShifts(shifts);
     }
     
     /**
@@ -53,10 +53,6 @@ public class CircularShifter {
             }
         }
         return circularShift;
-    }
-    
-    protected ArrayList<String> getCircularShifts() {
-        return shifts;
     }
 
 }

@@ -16,17 +16,40 @@ public class Alphabetizer {
     
     
     protected void sortCircularShifts() {
-        //Added the CASE_INSENSITIVE part
-        //This pretty much needs us to write our own sort for it
-        //It might be able to be done lazily using another ArrayList
-        //Just put all the lines begining with A or a into
-        //the new ArrayList and then sort that with the below
-        //Collections.sort(circularShifts)
-        //Add that list of sorted a's to another List
-        //Then do the same for every other letter
+        /*Was testing with this
+        ba Ca
+        ad Ce
+        Bd cb
+        af dc
+        ab cd
+        Bb Db
+        bc Cc
+        Ae Dd
+        Ac da
+        */
         Collections.sort(this.circularShifts, String.CASE_INSENSITIVE_ORDER);
-        //Collections.sort(circularShifts);
-        core.setCircularShifts(this.circularShifts);
+        ArrayList<String> tempup, templwr, hold;
+        tempup = new ArrayList<>();
+        templwr = new ArrayList<>();
+        hold = new ArrayList<>();
+        for(int x = 0; x < 26; x++){
+            for(String s : circularShifts){
+                char c = s.charAt(0); // This gives the first char of a line
+                int ascii = (int) c; // ascii is now ascii value for first char
+                if(ascii == (97+x)){templwr.add(s);}
+                if(ascii == (65+x)){tempup.add(s);}
+            }         
+            Collections.sort(templwr);//sort the set of lowercase letters
+            Collections.sort(tempup);//sort the set of uppercase letters
+            
+            templwr.forEach((s) -> {hold.add(s);});//add lowercase to hold
+            tempup.forEach((s) -> {hold.add(s);});//add uppercase  to hold
+            
+            templwr.clear();//clear templwr
+            tempup.clear();//clear tempup
+        }
+            
+        core.setCircularShifts(hold);
         
     }
     

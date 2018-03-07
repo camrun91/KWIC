@@ -17,15 +17,15 @@ public class Alphabetizer {
     
     protected void sortCircularShifts() {
         /*Was testing with this
-        ba Ca
-        ad Ce
-        Bd cb
-        af dc
-        ab cd
-        Bb Db
-        bc Cc
-        Ae Dd
-        Ac da
+ba a Ca
+ad an Ce
+Bd the cb
+af and dc
+ab or cd
+Bb of Db
+bc to Cc
+Ae be Dd
+Ac is da
         */
         Collections.sort(this.circularShifts, String.CASE_INSENSITIVE_ORDER);
         ArrayList<String> tempup, templwr, hold;

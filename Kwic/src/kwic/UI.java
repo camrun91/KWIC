@@ -21,7 +21,7 @@ public class UI extends Application {
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
-        mainStage.setTitle("Assignment 1 - KWIC");
+        mainStage.setTitle("Assignment 2 - KWIC");
         controller = new Controller(this);
         setupPane();
         mainStage.show();

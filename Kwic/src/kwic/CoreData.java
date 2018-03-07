@@ -87,7 +87,7 @@ public class CoreData {
     }
 
     protected ArrayList<String> getWord(int index) {
-        return splitToArrayList(words.get(index));
+        return splitToArrayList(lines.get(index));
     }
 
     /**
@@ -107,4 +107,22 @@ public class CoreData {
     		System.out.println(listToPrint.get(i));
     	}
     }
+    
+    /*In case its needed for the sort all this does is change the first 
+      letter of each line to the opposite case
+    public void switchFirstLetterCases(){
+        lines.forEach((s) -> {
+            StringBuffer sb = new StringBuffer(s);
+            convertOpposite(sb);
+            //s = sb.toString();
+        });
+    }
+    
+    static void convertOpposite(StringBuffer str){
+        Character c = str.charAt(0);
+        if (Character.isLowerCase(c))
+            str.replace(0, 1, Character.toUpperCase(c)+"");
+        else
+            str.replace(0, 1, Character.toLowerCase(c)+"");
+     }*/
 }

@@ -15,14 +15,14 @@ public class CircularShifter {
     
     public void constructCircularShifts() {
         //this loop gets each line
-        for (int i = 0; i < core.getWordCount(); i++) {
+        for (int i = 0; i < core.getLineCount(); i++) {
             ArrayList<String> lines = core.getWord(i);
             //this next loop gets each word in the line
             for (int j = 0; j < lines.size(); j++) { 
                     shifts.add(getCircularShift(lines, j));
             }
         }
-        core.setShifts(shifts);
+        core.setCircularShifts(shifts);
     }
     
     /**

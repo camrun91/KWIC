@@ -20,7 +20,7 @@ public class InputReader {
         this.input = core.getInput();
     }
     protected void readInput(){
-        lines = new ArrayList<>(Arrays.asList(input.split("\\r?\\n")));
+        lines = new ArrayList<>(Arrays.asList(input.split("\\r?\\n")));       
         core.setLines(lines);
     }
 }

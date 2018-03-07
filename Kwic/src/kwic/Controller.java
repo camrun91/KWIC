@@ -30,7 +30,10 @@ public class Controller {
         CircularShifter circularShifter = new CircularShifter(core);
         circularShifter.constructCircularShifts();
         //aphabetize the ines 
+        //core.switchFirstLetterCases();
         Alphabetizer alphabetizer = new Alphabetizer(core);
+        alphabetizer.sortCircularShifts();
+        //core.switchFirstLetterCases();
         //output the alphabetized lines 
         OutputWriter outputWriter = new OutputWriter(core, output);
         outputWriter.outputToText();

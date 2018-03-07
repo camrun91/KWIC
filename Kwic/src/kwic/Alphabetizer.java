@@ -2,6 +2,7 @@ package kwic;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Alphabetizer {
     
@@ -12,10 +13,23 @@ public class Alphabetizer {
         this.core = core;
         circularShifts = new ArrayList<>(core.getCircularShifts());
     }
-    //the collections.sort sorst the array list alphebeticly the collections.reverse reverses this to fit the criteria
-    //for the asignment.
+    
+    
     protected void sortCircularShifts() {
-        Collections.sort(circularShifts);
-        Collections.reverse(circularShifts);
+        //Added the CASE_INSENSITIVE part
+        //This pretty much needs us to write our own sort for it
+        //It might be able to be done lazily using another ArrayList
+        //Just put all the lines begining with A or a into
+        //the new ArrayList and then sort that with the below
+        //Collections.sort(circularShifts)
+        //Add that list of sorted a's to another List
+        //Then do the same for every other letter
+        Collections.sort(this.circularShifts, String.CASE_INSENSITIVE_ORDER);
+        //Collections.sort(circularShifts);
+        core.setCircularShifts(this.circularShifts);
+        
     }
+    
+
+
 }

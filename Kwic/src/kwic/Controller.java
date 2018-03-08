@@ -17,6 +17,7 @@ public class Controller {
     }
     
     public void processCircularShift(String input, TextArea output) {
+        long startTime = System.nanoTime();
         //process input
         InputReader inputReader = new InputReader(input);
         //use inputreaders data to process the lines
@@ -31,6 +32,7 @@ public class Controller {
         //output the alphabetized lines 
         OutputWriter outputWriter = new OutputWriter( alphabetizer.getSortedShifts(), output);
         outputWriter.outputToText();
+        System.out.println("Total Time " + (System.nanoTime()-startTime));
     }
 
 }

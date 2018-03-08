@@ -17,6 +17,7 @@ public class Controller {
     }
     
     public void processCircularShift(String input, TextArea output) {
+        long startTime = System.nanoTime();
         CoreData core = new CoreData();
         core.setInput(input);
         core.setOutput(output);
@@ -35,6 +36,7 @@ public class Controller {
         //output the alphabetized lines 
         OutputWriter outputWriter = new OutputWriter(core, output);
         outputWriter.outputToText();
+        System.out.println("total time " +(System.nanoTime()-startTime));
     }
 
 }

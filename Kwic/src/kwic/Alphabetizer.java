@@ -38,6 +38,7 @@ public class Alphabetizer {
         }
         this.circularShifts = hold;
     }
+    }
     
     protected ArrayList<String> getSortedShifts() {
         return circularShifts;

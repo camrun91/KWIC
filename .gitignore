@@ -5,17 +5,10 @@ dist/
 build/
 
 #netbeans specific
-
-/DungeonCrawl/nbproject/private
-
-/DungeonCrawl/nbproject/build-impl.xml
-
-/DungeonCrawl/nbproject/genfiles.properties
-
 bin/
-/Kwic/nbproject/private
-Kwic/nbproject/build-impl.xml
-Kwic/nbproject/genfiles.propertie
+/KWIC/nbproject/private
+KWIC/nbproject/build-impl.xml
+KWIC/nbproject/genfiles.propertie
 
 #java specific
 *.class

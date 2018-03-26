@@ -37,7 +37,7 @@ public class Alphabetizer {
             tempup.clear();//clear tempup
         }
         this.circularShifts = hold;
-    }
+    
     }
     
     protected ArrayList<String> getSortedShifts() {
